@@ -1,14 +1,14 @@
 Generalized Linear Models
 ================
 
-## Linear models:
+# Linear models:
 
-### [Text linear models](linmod.pdf)
+## [Text linear models](linmod.pdf)
 
-### [answers to execises](Answer-linmod.md)
+## [answers to execises](Answer-linmod.md)
 
-## Logistic regression
+# Logistic regression
 
-### [Text linear models](logreg.pdf)
+## [Text logistic regression models](logreg.pdf)
 
-### [answers to execises 1](Answer-logreg1.md)
+## [answers to execises 1](Answer-logreg1.md)
