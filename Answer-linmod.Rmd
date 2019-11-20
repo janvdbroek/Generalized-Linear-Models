@@ -1,0 +1,223 @@
+---
+title: "Answers to exercises Linear models"
+output:
+  html_document:
+    toc: true
+    toc_depth: 1
+    theme: sandstone
+    highlight: kate
+---
+
+# Exercise 1
+## 1a
+```{r}
+lm1 <- data.frame(metab=c(173,162,176,181,164,169,170,185,
+                          164,177,175,172,168),location=
+                         c(0,0,0,0,0,0,0,1,1,1,1,1,1))
+#
+library(ggplot2)
+ggplot(lm1,aes(x=factor(location),y=metab))+
+  geom_boxplot()+
+  labs(x="Location",y="Metabole")+
+  theme_bw()
+```
+
+## 1b
+```{r}
+lm2 <- data.frame(blcalc=c(17.0,18.9,13.2,14.6,13.3,16.5,
+                        14.3,10.9,15.6,8.9,18.6,16.2,12.5,15.1,
+                        16.2,17.1,14.7,15.3,14.2,12.8),
+                  treat=gl(2,10,labels=c("No hormone","hormone")),
+                  sex=gl(2,5,length=20,labels=c("Female","male")))
+metab.fit <- glm(metab~factor(location),data = lm1)
+```
+## 1c
+```{r}
+drop1(metab.fit,test = "F")
+```
+
+name     | SS    | df | ms   | F  | p=value
+---------|-------|----|------|----|----------
+Location |  25.1 |  1 |  25.1|0.52| 0.4869
+Residual | 532.93| 11 |  48.4|    |    
+Total    | 558   | 12 |
+
+## 1d
+The F-value is 0.52 with a p-value of 0.4869 which is larger then 0.05 so the null-hypothesis is not rejected. This research cannot show that there is a location effect on the metabole.
+
+# Exercise 2
+
+## 2a
+```{r}
+lm2 <- data.frame(blcalc=c(17.0,18.9,13.2,14.6,13.3,16.5,14.3,
+                         10.9,15.6,8.9,18.6,16.2,12.5,15.1,16.2,17.1,14.7,15.3,14.2,12.8),
+                  treat=gl(2,10,labels=c("No hormone","hormone")),
+                  sex=gl(2,5,length=20,labels=c("Female","male")))
+```
+The function gl() makes a factor varable and it works as follows:
+gl(n, k, length = n*k, labels = 1:n, ordered = FALSE)
+n=an integer giving the number of levels.
+k=an integer giving the number of replications.
+length=an integer giving the length of the result.
+labels an optional vector of labels for the resulting factor levels.
+ordered a logical indicating whether the result should be ordered
+or not.
+```{r}
+ggplot(lm2,aes(y=blcalc,x=treat,fill=sex))+
+  geom_boxplot()+
+  labs(y="Blood calcium")+
+  theme_bw()
+
+```
+
+## 2b
+```{r}
+blcalc.fit <- glm(blcalc~treat+sex,data = lm2)
+```
+
+## 2c
+```{r}
+drop1(blcalc.fit,test="F")
+```
+SS for treat 102.245-97.733=4.512 and for sex 109.437-97.733=11.704
+
+name     | SS    | df | ms   | F  | p=value
+---------|-------|----|------|----|----------
+treat    |  4.51 |  1 | 4.51 |0.79| 0.3880
+sex      | 11.70 |  1 |11.70 |2.04| 0.1717   
+residual | 97.73 | 17 | 5.75 |
+total    |113.95
+
+## 2d
+For sex p-value= 0.17 so one can not show diffrenece between males and females.
+For treat the p-value=0.3880 so one can not show diffrenece between the hormone groups.
+
+## 2e
+```{r}
+summary(blcalc.fit)
+```
+
+In the summary the line factor(hormone)2 gives the difference
+between the mean blood calcium of the hormone group and the the mean blood calcium of the no hormone group. This
+difference is .95 with a standard error of 1.0723
+
+# exercise 3
+
+## 3a
+```{r}
+lm3 <- read.table("aligator.txt",header=TRUE)
+```
+or with read in the data with the rstudio menu: import dataset, from text.
+```{r}
+ggplot(lm3,aes(y=Weight,x=Length))+
+  geom_point()+
+  geom_smooth(method = lm,se=FALSE)+
+  theme_bw()
+```
+
+## 3b
+```{r}
+ggplot(lm3,aes(y=log(Weight),x=log(Length)))+
+  geom_point()+
+  geom_smooth(method = lm,se=FALSE)+
+  theme_bw()
+
+```
+## 3c
+```{r}
+cor(lm3$Length,lm3$Weight)
+cor(log(lm3$Length),log(lm3$Weight))
+```
+
+The log version is a better.
+
+## 3d
+```{r}
+Wght.fit <- glm(log(Weight)~log(Length),data = lm3)
+summary(Wght.fit)
+```
+Weight=-6.48+2.435*Length+residual
+
+## 3e
+```{r}
+drop1(Wght.fit,test="F")
+```
+
+name     | SS    | df | ms   | F  | p=value
+---------|-------|----|------|----|----------
+Location |  6.64 |  1 |  6.64|41.5| 1.4*10^-6
+Residual |  3.68 | 23 |  0.16|    |    
+Total    | 10.32 | 24 |
+
+The nulhypothesis that the regression coefficient in the
+population is zero is rejected since the p value is very low.
+
+# exercise 4
+
+## 4a
+```{r}
+lm4 <- data.frame(bp=c(87,86.5,89,88.5,87.5,88,86.5,87,85,86,85,83),
+                dose=c(5,6,7,8,9,10,5,6,7,8,9,10),
+                group=c(0,0,0,0,0,0,1,1,1,1,1,1))
+lm4$fgroup <- factor(lm4$group)
+lm4$prod <- with(lm4,group*dose)
+```
+
+## 4b
+```{r}
+model.i <- glm(bp~group+dose+group:dose,data = lm4)
+model.ii <- glm(bp~fgroup+dose+fgroup:dose,data = lm4)
+model.iii <- glm(bp~group+group:dose,data = lm4)
+model.iv <- glm(bp~group+prod,data = lm4)
+model.v <- glm(bp~fgroup+fgroup:dose,data = lm4)
+```
+## 4c+4d
+```{r}
+summary(model.i)
+```
+y=86.1429+0.2143dose and y=90.2381-0.6428dose
+```{r}
+summary(model.ii)
+```
+same as model.i
+```{r}
+summary(model.iii)
+```
+y=87.75 and y=90.2381 - 0.6429*dose so no relation with dose in
+group 0
+```{r}
+summary(model.iv)
+```
+same as model.iii
+```{r}
+summary(model.v)
+```
+Same as model.i but now with regression coefficients explicit in the
+output. This is the nested version of the model.Note that the difference fgroup1:dose-fgroup0:dose=-.8571 the
+interaction from model.i and model.ii. So the interaction term in these models shows wether the difference inslopes is the same in both groups.
+Usually first model i or ii is fitted. Then if the interaction is important the nested version (model v) can be fitted to see which of the slopes are important. The slope in group2 is significant so then model.iii or model.iv can be fitted.
+
+# exercise 5
+## 5a
+
+```{r}
+lm5 <- read.table("lowbirth.dat",header=TRUE)
+#
+fit.0 <- glm(bwt~ht+smoke+age+smoke:ht+age:ht,data = lm5)
+drop1(fit.0,test="F")
+```
+So the ht:age interaction is needed in the model. Now fit the model without the
+ht:smoke interaction:
+interpretation: for instance ht:age, the age effect depends on the hypertension group.
+## 5c
+```{r}
+fit.1 <- glm(bwt~ht+smoke+age+age:ht,data = lm5)
+drop1(fit.1,test="F")
+```
+
+So no futher reduction is possible.(Age stays in the model since
+the ht:age interaction is in the model.)
+```{r}
+summary(fit.1)
+```
+
