@@ -3,4 +3,4 @@
 
 ## Linear models:
 
-### [answers to execises](Answer-linmod.html)
+### [answers to execises](Answer-linmod.md)
