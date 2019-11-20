@@ -1,4 +1,4 @@
-Answers to exercises Lofgistic regression part 1
+Answers to exercises Logistic regression part 1
 ================
 
 # Exercise 1

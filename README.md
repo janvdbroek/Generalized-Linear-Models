@@ -3,7 +3,8 @@
 
 ## Linear models:
 
-###          [answers to execises](Answer-linmod.md)
+###   [answers to execises](Answer-linmod.md)
+###   [Text linear models](linmod.pdf)
 
 ## Logistic regression
 

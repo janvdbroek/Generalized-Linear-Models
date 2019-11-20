@@ -1,9 +1,9 @@
 ---
-title: "Answers to exercises Lofgistic regression part 1"
+title: "Answers to exercises Logistic regression part 1"
 output:
   github_document:
-  toc: true
-  toc_depth: 2
+    toc: true
+    toc_depth: 2
 ---
 
 # Exercise 1
