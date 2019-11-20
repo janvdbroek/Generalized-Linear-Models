@@ -8,13 +8,21 @@ output:
 
 # Linear models:
 
-##   [Text linear models](linmod.pdf)
+## Text Linear models (pdf)
 
-##   [answers to execises](Answer-linmod.md)
+[linear models](linmod.pdf)
+
+## Answers exercises linear models
+
+[answers](Answer-linmod.md)
 
 
 # Logistic regression
 
-##   [Text logistic regression models](logreg.pdf)
+## Text logistic regression models (pdf)
 
-##  [answers to execises 1](Answer-logreg1.md)
+[logistic regression models](logreg.pdf)
+
+## Answers to execises logistic regression part 1  
+
+[answers 1](Answer-logreg1.md)
