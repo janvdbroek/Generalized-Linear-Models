@@ -1,11 +1,9 @@
 ---
 title: "Answers to exercises Linear models"
 output:
-  html_document:
+  github_document:
     toc: true
     toc_depth: 1
-    theme: sandstone
-    highlight: kate
 ---
 
 # Exercise 1
