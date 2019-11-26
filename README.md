@@ -1,34 +1,28 @@
 Generalized Linear Models
-=======================
+================
 
-# Linear models:
+1.  **Continuous data: Linear models**: Linear regression, anova and
+    extentions of these.
 
-Linear regression, anova and extentions of these.
+<!-- end list -->
 
-## Text Linear models.
+  - Text Linear models. [Pdf-file](linmod.pdf) of the text.
 
-Pdf-file of the text.
+  - [Answers](Answer-linmod.md) exercises linear models
 
-[linear models](linmod.pdf)
+<!-- end list -->
 
-## Answers exercises linear models
+2.  **Binary data: Logistic regression** including the likelihood
+    approach.
 
-Answers fron all exercises from the text above.
+<!-- end list -->
 
-[answers](Answer-linmod.md)
+  - Text logistic regression models, [Pdf-file](logreg.pdf) of the text.
 
-# Logistic regression
+  - [Answers](Answer-logreg1.md) to execises logistic regression part 1
 
-Including the likelihood approach.
+  - [Answers](Answer-logreg1.md) to execises logistic regression part 2
 
-## Text logistic regression models (pdf)
+<!-- end list -->
 
-Pdf-file of the text.
-
-[logistic regression models](logreg.pdf)
-
-## Answers to execises logistic regression part 1
-
-Answers fron all exercises from the text above.
-
-[answers 1](Answer-logreg1.md)
+3.  **Count data: Poisson models**

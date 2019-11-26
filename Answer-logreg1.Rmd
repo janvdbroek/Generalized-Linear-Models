@@ -1,5 +1,5 @@
 ---
-title: "Answers to exercises Logistic regression part 1"
+title: "Answers to exercises \"Binary data: Logistic regression\" part 1"
 output:
   github_document:
     toc: true

@@ -1,42 +1,35 @@
 ---
 title: "Generalized Linear Models"
 output:
-  github_document:
+  html_document:
     toc: true
     toc_depth: 3
 editor_options: 
   chunk_output_type: inline
 ---
 
-# Linear models:
+1. **Continuous data: Linear models**: Linear regression, anova and extentions of these.
 
-Linear regression, anova and extentions of these.
+- Text Linear models.
+[Pdf-file](linmod.pdf) of the text.
 
-## Text Linear models.
-
-Pdf-file of the text.
-
-[linear models](linmod.pdf)
-
-## Answers exercises linear models
-
-Answers fron all exercises from the text above.
-
-[answers](Answer-linmod.md)
+- [Answers](Answer-linmod.md) exercises linear models.
 
 
-# Logistic regression
+2. **Binary data: Logistic regression** including the likelihood approach.
 
-Including the likelihood approach.
+- Text logistic regression models, [Pdf-file](logreg.pdf) of the text.
 
-## Text logistic regression models (pdf)
+- [Answers](Answer-logreg1.md) to execises logistic regression part 1.  
 
-Pdf-file of the text.
+- [Answers](Answer-logreg1.md) to execises logistic regression part 2.  
 
-[logistic regression models](logreg.pdf)
+3. **Count data: Poisson models**
 
-## Answers to execises logistic regression part 1  
+- Text Poisson models, [Pdf-file](poisson.pdf) of the text
 
-Answers fron all exercises from the text above.
+- [Answers](Answer-poisson.md) exercises poisson models.
 
-[answers 1](Answer-logreg1.md)
+4. **Generalized linear models**
+
+- Text short intermezzo on generalized linear models, [Pdf-file](genlinmod.pdf)

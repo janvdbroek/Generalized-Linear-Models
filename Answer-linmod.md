@@ -1,4 +1,4 @@
-Answers to exercises Linear models
+Answers to exercises " Continuous data: Linear models"
 ================
 
 # Exercise 1
@@ -436,11 +436,16 @@ Same as model.i but now with regression coefficients explicit in the
 output. This is the nested version of the model.Note that the difference
 fgroup1:dose-fgroup0:dose=-.8571 the interaction from model.i and
 model.ii. So the interaction term in these models shows wether the
-difference inslopes is the same in both groups. Usually first model i or
-ii is fitted. Then if the interaction is important the nested version
-(model v) can be fitted to see which of the slopes are important. The
-slope in group2 is significant so then model.iii or model.iv can be
-fitted.
+difference inslopes is the same in both groups.
+
+Usually first model i or ii is fitted. Then if the interaction is
+important the nested version (model v) can be fitted to see which of the
+slopes are important. The slope in group2 is significant so then
+model.iii or model.iv can be fitted.
+
+So by choosing a parameterization various aspects of the regression
+equations can be made explicit (e.g. the equation for both groups, or
+the difference in slope and/or intercept).
 
 # exercise 5
 

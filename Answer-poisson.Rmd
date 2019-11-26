@@ -1,0 +1,128 @@
+---
+title: "Answers to exercizes \"count data: poison models\" "
+output:
+  github_document:
+    toc: true
+    toc_depth: 2
+---
+
+# Exercise 1
+
+## 1a
+```{r}
+p1 <- read.table("cancer",header=TRUE)
+cancer.fit <- glm(cases~factor(age)+factor(city)+
+                    offset(log(pop/1000)),family=poisson,data=p1)
+```
+## 1b
+```{r}
+p1 <- data.frame(p1,res=resid(cancer.fit),fv=fitted(cancer.fit))
+library(ggplot2)
+ggplot(p1,aes(x=fv,y=res))+geom_point(aes(color=factor(age)))
+```
+
+## 1c
+```{r}
+drop1(cancer.fit)
+```
+
+City can be left out:
+```{r}
+cancer.fit2 <- glm(cases~factor(age)+offset(log(pop/1000)),
+                   family=poisson,data=p1)
+drop1(cancer.fit2)
+```
+Age is needed in the model.
+
+## 1d
+```{r}
+summary(cancer.fit2)
+confint(cancer.fit2)
+```
+
+For example: the log ratio mean number of cancer cases per 1000 individualsfor age 5 vs age 1 is 1.39 with a 95% profile log-likelihood confidence interval of (1.39;1.90)
+
+For the ratio's:
+```{r}
+exp(coef(cancer.fit2))
+exp(confint(cancer.fit2))
+```
+The mean number of cancer cases per 1000 individuals in agegroup 5 is 6.34 largers as compared to age group1.
+
+# Exrcise 2
+
+## 2a
+```{r}
+p2 <- read.table("coronary",header=TRUE)
+```
+
+## 2b
+```{r}
+coro.fit <- glm(deaths~factor(Age)+factor(Smoke)+factor(Age):factor(Smoke)+offset(log(Pyears)),family=poisson,data=p2)
+summary(coro.fit)
+```
+```{r}
+drop1(coro.fit,test = "Chisq")
+```
+## 2c
+Fit the nested version:
+```{r}
+coro.fit2 <- glm(deaths~factor(Age)+factor(Age):factor(Smoke)+offset(log(Pyears)),family=poisson,data=p2)
+summary(coro.fit2)
+```
+So this data shows a smoke effect in age 1 and age 2.
+the mean number of deaths for smoke 1 is exp(1.7469)=5.74 time lager as compared to not-smoke for agegroup 1 and exp(0.7603)=2.14 for agegroup 2.
+
+## 2d
+```{r}
+pyear.fit <- glm(log(Pyears)~factor(Age)+factor(Smoke),data=p2)
+drop1(pyear.fit,test="F")
+summary(pyear.fit)
+```
+There seems to be some logic in these effects.
+
+# Exercise 3
+
+# 3a
+
+```{r}
+tick.fit <- glm(TICKS~HEIGHT+YEAR,family=poisson,
+                data=lme4::grouseticks)
+summary(tick.fit)
+```
+
+# 3b
+```{r}
+ exp(coef(tick.fit))
+```
+So in 96 the mean number of ticks is 1.51 times larger as in 95 and .185 time lager, so 1/.185 times 5.39 times smaller, in 97 as compared to 95.
+
+# 3c
+```{r}
+p3 <- data.frame(lme4::grouseticks,res=resid(tick.fit),fv=fitted(tick.fit))
+library(ggplot2)
+ggplot(p3,aes(x=fv,y=res))+geom_point()
+```
+
+There are some fitted values with very large residuals! So the model fitting is done yet. See dependent data.
+
+# Exercise 4
+
+```{r}
+p4 <- read.table("BeetleEggCrowding.txt",header = TRUE)
+negg.fit <- glm(NumEggs~factor(Temp)+factor(TRT)+
+                  factor(Temp):factor(TRT),
+                family = poisson,data=p4)
+drop1(negg.fit)
+```
+
+Nested version:
+```{r}
+negg.fit2 <- glm(NumEggs~factor(Temp)+
+                  factor(Temp):factor(TRT),
+                family = poisson,data=p4)
+confint(negg.fit2)
+```
+
+So there is a temperature effect at 24 degrees. The log ratio of the mean numer of eggs for trt I vs trt G is -0.5174 with a 95 % profile log-likelihood confidence interval of (-0.827 -0.191).
+
