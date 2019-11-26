@@ -8,7 +8,7 @@ Generalized Linear Models
 
   - Text Linear models. [Pdf-file](linmod.pdf) of the text.
 
-  - [Answers](Answer-linmod.md) exercises linear models
+  - [Answers](Answer-linmod.md) exercises linear models.
 
 <!-- end list -->
 
@@ -19,10 +19,25 @@ Generalized Linear Models
 
   - Text logistic regression models, [Pdf-file](logreg.pdf) of the text.
 
-  - [Answers](Answer-logreg1.md) to execises logistic regression part 1
+  - [Answers](Answer-logreg1.md) to execises logistic regression part 1.
 
-  - [Answers](Answer-logreg1.md) to execises logistic regression part 2
+  - [Answers](Answer-logreg1.md) to execises logistic regression part 2.
 
 <!-- end list -->
 
 3.  **Count data: Poisson models**
+
+<!-- end list -->
+
+  - Text Poisson models, [Pdf-file](poisson.pdf) of the text
+
+  - [Answers](Answer-poisson.md) exercises poisson models.
+
+<!-- end list -->
+
+4.  **Generalized linear models**
+
+<!-- end list -->
+
+  - Text short intermezzo on generalized linear models,
+    [Pdf-file](genlinmod.pdf)
