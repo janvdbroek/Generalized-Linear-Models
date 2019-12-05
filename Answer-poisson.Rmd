@@ -83,7 +83,7 @@ There seems to be some logic in these effects.
 
 # Exercise 3
 
-# 3a
+## 3a
 
 ```{r}
 tick.fit <- glm(TICKS~HEIGHT+YEAR,family=poisson,
@@ -91,13 +91,13 @@ tick.fit <- glm(TICKS~HEIGHT+YEAR,family=poisson,
 summary(tick.fit)
 ```
 
-# 3b
+## 3b
 ```{r}
  exp(coef(tick.fit))
 ```
 So in 96 the mean number of ticks is 1.51 times larger as in 95 and .185 time lager, so 1/.185 times 5.39 times smaller, in 97 as compared to 95.
 
-# 3c
+## 3c
 ```{r}
 p3 <- data.frame(lme4::grouseticks,res=resid(tick.fit),fv=fitted(tick.fit))
 library(ggplot2)

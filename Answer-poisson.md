@@ -294,7 +294,7 @@ There seems to be some logic in these effects.
 
 # Exercise 3
 
-# 3a
+## 3a
 
 ``` r
 tick.fit <- glm(TICKS~HEIGHT+YEAR,family=poisson,
@@ -327,7 +327,7 @@ summary(tick.fit)
     ## 
     ## Number of Fisher Scoring iterations: 6
 
-# 3b
+## 3b
 
 ``` r
  exp(coef(tick.fit))
@@ -339,7 +339,7 @@ summary(tick.fit)
 So in 96 the mean number of ticks is 1.51 times larger as in 95 and .185
 time lager, so 1/.185 times 5.39 times smaller, in 97 as compared to 95.
 
-# 3c
+## 3c
 
 ``` r
 p3 <- data.frame(lme4::grouseticks,res=resid(tick.fit),fv=fitted(tick.fit))
@@ -376,36 +376,6 @@ Nested version:
 negg.fit2 <- glm(NumEggs~factor(Temp)+
                   factor(Temp):factor(TRT),
                 family = poisson,data=p4)
-summary(negg.fit2)
-```
-
-    ## 
-    ## Call:
-    ## glm(formula = NumEggs ~ factor(Temp) + factor(Temp):factor(TRT), 
-    ##     family = poisson, data = p4)
-    ## 
-    ## Deviance Residuals: 
-    ##    Min      1Q  Median      3Q     Max  
-    ## -3.817  -2.662  -1.076   1.575   5.174  
-    ## 
-    ## Coefficients:
-    ##                             Estimate Std. Error z value Pr(>|z|)    
-    ## (Intercept)                   0.9445     0.2357   4.007 6.15e-05 ***
-    ## factor(Temp)24                1.0415     0.2742   3.799 0.000145 ***
-    ## factor(Temp)21:factor(TRT)I   0.3205     0.2522   1.271 0.203888    
-    ## factor(Temp)24:factor(TRT)I  -0.5174     0.1618  -3.197 0.001388 ** 
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## (Dispersion parameter for poisson family taken to be 1)
-    ## 
-    ##     Null deviance: 507.48  on 83  degrees of freedom
-    ## Residual deviance: 485.57  on 80  degrees of freedom
-    ## AIC: 673.43
-    ## 
-    ## Number of Fisher Scoring iterations: 6
-
-``` r
 confint(negg.fit2)
 ```
 
