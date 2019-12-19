@@ -1,0 +1,115 @@
+---
+title: "Answers to exercises \"Dependent data: Mixed effect models\" part 1"
+output:
+  github_document:
+    toc: true
+    toc_depth: 2
+---
+
+# Exercise 1
+
+## 1a
+```{r}
+mm1 <- nlme::Milk[nlme::Milk$Time<=3,]
+mm1 <- mm1[mm1$Time!=2,]
+unpa <- t.test(protein~Time,paired = FALSE, var.equal = TRUE, data = mm1)
+unpa
+unpa$stderr
+```
+
+## 1b
+```{r}
+pa <- t.test(protein~Time, paired=TRUE, data = mm1)
+pa
+pa$stderr
+```
+
+## 1c
+The standard error for the paired case is smaller because the observations on timepoint 1 and on timepoint 3 are correlated:
+```{r}
+t1 <- mm1$protein[mm1$Time==1]
+t3 <- mm1$protein[mm1$Time==3]
+cor.test(t1,t3)
+```
+So the correlation between protein on time 1 and time 3 is 0.47 with a 95% two sided confidence interval of (0.28;0.63)
+
+## 1d
+```{r}
+library(lme4)
+fit <- lmer(protein~factor(Time)+(1|Cow),data=mm1)
+summary(fit)
+```
+## 1d
+
+With the random intercept model the result:
+
+               Estimate Std. Error t value  
+               ...
+factor(Time)3 -0.43089    0.04071  -10.58
+
+is the same as with the paired t-test. (The difference in sign is because the random intercept model catculates the difference in means beyween time 3 and time 1, whereas the pairde t-test takes this diffrence between time 3 and time 1)
+
+# Exercise 2
+
+## 2a
+```{r}
+Od <- nlme::Orthodont
+library(ggplot2)
+library(lme4)
+ggplot(Od,aes(x=age,y=distance,group=Subject))+geom_line(aes(color=Sex))
+fit.od <- lmer(distance~factor(age)+factor(Sex)+factor(age):factor(Sex)+(1|Subject), REML=FALSE, data = Od)
+```
+
+## 2b
+```{r}
+Od <- data.frame(Od,res=residuals(fit.od))
+ggplot(Od,aes(sample=res))+
+  stat_qq()+stat_qq_line(color="red")+
+  labs(y="Residuals",
+       title="Normal Probability plot")+
+  theme_bw()
+```
+
+## 2c
+```{r}
+drop1(fit.od)
+```
+
+Interaction can be legt out.
+```{r}
+fit.od2 <- lmer(distance~factor(age)+factor(Sex)+(1|Subject), REML=FALSE, data = Od)
+drop1(fit.od2)
+```
+
+```{r}
+summary(fit.od2,correlation=FALSE)
+confint(fit.od2)
+```
+
+# Exercise 3
+
+## 3a
+
+```{r}
+mm3 <- grouseticks
+fit.gr <- lmer(TICKS~HEIGHT+factor(YEAR)+(1|BROOD),data = mm3)
+```
+
+## 3b
+
+```{r}
+drop1(fit.gr,test="Chisq")
+```
+
+## 3c
+
+```{r}
+mm3 <- data.frame(mm3,res=residuals(fit.gr))
+ggplot(mm3,aes(sample=res))+
+  stat_qq()+stat_qq_line(color="red")+
+  labs(y="Residuals",
+       title="Normal Probability plot")+
+  theme_bw()
+```
+
+This model does not fit the data well. Since THICKS is a count variable, a poisson model migth do a better job.

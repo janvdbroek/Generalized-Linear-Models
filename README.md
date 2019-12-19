@@ -1,21 +1,15 @@
 Generalized Linear Models
 ================
 
-1.  **Continuous data: Linear models**: Linear regression, anova and
-    extentions of these.
-
-<!-- end list -->
+<font size="5"> 1. **Continuous data: Linear models**: Linear
+regression, anova and extentions of these.</font>
 
   - Text Linear models. [Pdf-file](linmod.pdf) of the text.
 
   - [Answers](Answer-linmod.md) exercises linear models.
 
-<!-- end list -->
-
-2.  **Binary data: Logistic regression** including the likelihood
-    approach.
-
-<!-- end list -->
+<font size="5"> 2. **Binary data: Logistic regression** including the
+likelihood approach.</font>
 
   - Text logistic regression models, [Pdf-file](logreg.pdf) of the text.
 
@@ -23,21 +17,26 @@ Generalized Linear Models
 
   - [Answers](Answer-logreg1.md) to execises logistic regression part 2.
 
-<!-- end list -->
-
-3.  **Count data: Poisson models**
-
-<!-- end list -->
+<font size="5"> 3. **Count data: Poisson models**</font>
 
   - Text Poisson models, [Pdf-file](poisson.pdf) of the text
 
   - [Answers](Answer-poisson.md) exercises poisson models.
 
-<!-- end list -->
-
-4.  **Generalized linear models**
-
-<!-- end list -->
+<font size="5"> 4. **Generalized linear models**</font>
 
   - Text short intermezzo on generalized linear models,
     [Pdf-file](genlinmod.pdf)
+
+<font size="5"> 5. **Dependent data: Mixed effect models**</font>
+
+  - Text Mixed effect models, [Pdf-file](Dependent_data.pdf) of the text
+
+  - [Answers](Answer-mixedmodels1.md) exercises Mixed effect models 1
+    models.
+
+  - [Answers](Answer-mixedmodels2.md) exercises Mixed effect models 2
+    models.
+
+<font size="5"> All comments are most welcome. Please email me:
+<j.vandenbroek@uu.nl></font>

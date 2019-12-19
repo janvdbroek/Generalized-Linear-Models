@@ -1,0 +1,154 @@
+---
+title: "Answers to exercises \"Dependent data: Mixed effect models\" part 2"
+output:
+  github_document:
+    toc: true
+    toc_depth: 2
+---
+
+# Exercise 1
+
+## 1a
+```{r}
+library(lme4)
+mm2.1 <- nlme::Milk[nlme::Milk$Time<8,]
+fit.m1 <- lmer(protein~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                   (1+Time|Cow),data = mm2.1)
+fit.m2 <- lmer(protein~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                   (1|Cow),data = mm2.1)
+fit.m3 <- lmer(protein~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                   (0+Time|Cow),data = mm2.1)
+AIC(fit.m1,fit.m2,fit.m3)
+
+```
+
+## 1b
+```{r}
+fit.m2 <- lmer(protein~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                   (1|Cow),data = mm2.1)
+fit.m3 <- lmer(protein~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                   (0+Time|Cow),data = mm2.1)
+AIC(fit.m1,fit.m2,fit.m3)
+
+```
+
+So the model with the random intercepts and the random slopes fits the data best.
+
+## 1c
+```{r}
+fit.m4 <- lmer(protein~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                   (1+Time|Cow),REML=FALSE, data = mm2.1)
+drop1(fit.m1)
+```
+Interaction is not needed in the model.
+```{r}
+fit.m5 <- lmer(protein~factor(Time)+(Diet)+(1+Time|Cow), 
+               REML=FALSE,control = lmerControl(optimizer ="Nelder_Mead"), 
+               data = mm2.1)
+drop1(fit.m5)
+```
+
+## 1d
+Now there is a diet effect. (Nelder_mead is used to avoid convergence problems)
+
+# Exercise 2
+
+## 2a
+```{r}
+mm2.2 <- nlme::BodyWeight
+?nlme::BodyWeight
+```
+```{r}
+library(ggplot2)
+ggplot(mm2.2,aes(x=Time,y=weight,group=Rat))+geom_line(aes(color=Diet))
+```
+
+## 2b
+
+```{r}
+fit.r1 <- lmer(weight~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                 (1+Time|Rat),control = lmerControl(optimizer ="Nelder_Mead"),
+               data = mm2.2)
+fit.r2 <- lmer(weight~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                 (1|Rat),control = lmerControl(optimizer ="Nelder_Mead"),
+               data = mm2.2)
+fit.r3 <- lmer(weight~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                 (0+Time|Rat),control = lmerControl(optimizer ="Nelder_Mead"),
+               data = mm2.2)
+AIC(fit.r1,fit.r2,fit.r3)
+```
+Random slopes and random intercepts are needed in the model.
+
+## 2c
+
+```{r}
+fit.r4 <- lmer(weight~factor(Time)+factor(Diet)+factor(Diet):factor(Time)+
+                 (1+Time|Rat),control = lmerControl(optimizer ="Nelder_Mead"),
+               REML=FALSE,data = mm2.2)
+drop1(fit.r4)
+```
+
+So the interaction is needed. Fit now the nested version:
+
+```{r}
+fit.r5 <- lmer(weight~factor(Time)+factor(Diet):factor(Time)+
+                 (1+Time|Rat),control = lmerControl(optimizer ="Nelder_Mead"),
+               REML=FALSE,data = mm2.2)
+summary(fit.r5)
+```
+
+## 2d
+A model linear mixed effect model with random rat and random time effects was used to analyse the weights.
+Model reduction was done wit Akaike's information criterion.
+The fixed efffect were diet, time and there interaction.
+First using REML the random affect part was determined. Then using maximum likelihood the fixed effect part was examined.
+
+THe diet-time interaction is neede in the model. A nested version of this model showed that there was a difference between diet1 and 2 and btween diet 1 and 3 and that these differences increaed in time.
+
+# Exercise 3
+
+## 3a
+
+```{r}
+mm2.3 <- read.csv("osteochon.csv",header=TRUE)
+ocfit.1 <- glm(oc~factor(father)+factor(ground)+height,family=binomial,data = mm2.3)
+summary(ocfit.1)
+```
+
+## 3b
+Some standard errors are very large indicating a lack of information. That is there are father with daughters who have no oc.
+
+## 3c
+
+```{r}
+mm2.3$sc.height <- mm2.3$height-mean(mm2.3$height)
+ocfit.2 <- glmer(oc~factor(ground)+sc.height+(1|father),family=binomial,data = mm2.3)
+AIC(ocfit.1,ocfit.2)
+summary(ocfit.2)
+```
+For the fixed effect model the AIC is 369.4 and for the random effect model this is 358.4 adifference of 11, so the random effect model is much better. The estimates and standard errors for height ar quite similar.
+
+## 3d
+
+The observations within a father are now correlated on the logit scale. The standard deviation between the fathers on the logit scale is .377.
+
+
+# Exercise 4
+
+## 4a
+```{r}
+mm.gt <- grouseticks
+fitgt <- glmer(TICKS~YEAR+cHEIGHT+(1|BROOD)+(1|INDEX),data = mm.gt,family="poisson")
+AIC(fitgt)
+```
+The AIC is 1794.04. The AIC of the previous fit was 2766.89. So this model fits the data much better. 
+```{r}
+mm.gt <- data.frame(mm.gt,res=residuals(fitgt))
+ggplot(mm.gt,aes(sample=res))+
+  stat_qq()+stat_qq_line(color="red")+
+  labs(y="Residuals",
+       title="Normal Probability plot")+
+  theme_bw()
+```
+
+This residual plot also looks much better.
