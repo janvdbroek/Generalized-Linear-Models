@@ -102,8 +102,9 @@ parameters.
 
 ## 1d
 
-\(ln(\frac{\pi}{(1-\pi)}=a+ln(followup)\) or
-\(ln() \frac{\pi}{(1-\pi)})/followup ) =a\)
+The model with only a comstant and an offset is:
+
+log(odds)=a+log(follow-up) or log(odds/follow-up)=1
 
 so here the odds per unit time is modelled.
 
