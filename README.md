@@ -8,6 +8,8 @@ regression, anova and extentions of these.</font>
 
   - [Answers](Answer-linmod.md) exercises linear models.
 
+  - Presentation. [pdf-file](linmod-pres.pdf)
+
 <font size="5"> 2. **Binary data: Logistic regression** including the
 likelihood approach.</font>
 
@@ -16,6 +18,8 @@ likelihood approach.</font>
   - [Answers](Answer-logreg1.md) to execises logistic regression part 1.
 
   - [Answers](Answer-logreg1.md) to execises logistic regression part 2.
+
+  - Presentation. [pdf-file](logreg-pres.pdf)
 
 <font size="5"> 3. **Count data: Poisson models**</font>
 
