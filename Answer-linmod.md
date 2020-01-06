@@ -22,11 +22,6 @@ ggplot(lm1,aes(x=factor(location),y=metab))+
 ## 1b
 
 ``` r
-lm2 <- data.frame(blcalc=c(17.0,18.9,13.2,14.6,13.3,16.5,
-                        14.3,10.9,15.6,8.9,18.6,16.2,12.5,15.1,
-                        16.2,17.1,14.7,15.3,14.2,12.8),
-                  treat=gl(2,10,labels=c("No hormone","hormone")),
-                  sex=gl(2,5,length=20,labels=c("Female","male")))
 metab.fit <- glm(metab~factor(location),data = lm1)
 ```
 
@@ -62,7 +57,7 @@ there is a location effect on the metabole.
 
 ``` r
 lm2 <- data.frame(blcalc=c(17.0,18.9,13.2,14.6,13.3,16.5,14.3,
-                         10.9,15.6,8.9,18.6,16.2,12.5,15.1,16.2,17.1,14.7,15.3,14.2,12.8),
+                  10.9,15.6,8.9,18.6,16.2,12.5,15.1,16.2,17.1,14.7,15.3,14.2,12.8),
                   treat=gl(2,10,labels=c("No hormone","hormone")),
                   sex=gl(2,5,length=20,labels=c("Female","male")))
 ```
@@ -75,7 +70,7 @@ vector of labels for the resulting factor levels. ordered a logical
 indicating whether the result should be ordered or not.
 
 ``` r
-ggplot(lm2,aes(y=blcalc,x=treat,fill=sex))+
+ggplot(lm2,aes(y=blcalc,x=treat,fill=(sex)))+
   geom_boxplot()+
   labs(y="Blood calcium")+
   theme_bw()
@@ -230,7 +225,7 @@ summary(Wght.fit)
     ## 
     ## Number of Fisher Scoring iterations: 2
 
-Weight=-6.48+2.435\*Length+residual
+log(Weight)=-6.48+2.435\*log(Length)+residual
 
 ## 3e
 
@@ -250,7 +245,7 @@ drop1(Wght.fit,test="F")
 
 | name     | SS    | df | ms   | F    | p=value    |
 | -------- | ----- | -- | ---- | ---- | ---------- |
-| Location | 6.64  | 1  | 6.64 | 41.5 | 1.4\*10^-6 |
+| weight   | 6.64  | 1  | 6.64 | 41.5 | 1.4\*10^-6 |
 | Residual | 3.68  | 23 | 0.16 |      |            |
 | Total    | 10.32 | 24 |      |      |            |
 
