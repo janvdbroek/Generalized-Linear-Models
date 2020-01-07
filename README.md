@@ -17,7 +17,7 @@ likelihood approach.</font>
 
   - [Answers](Answer-logreg1.md) to execises logistic regression part 1.
 
-  - [Answers](Answer-logreg1.md) to execises logistic regression part 2.
+  - [Answers](Answer-logreg2.md) to execises logistic regression part 2.
 
   - Presentation. [pdf-file](logreg-pres.pdf)
 
