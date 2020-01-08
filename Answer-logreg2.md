@@ -34,7 +34,7 @@ drop1(osteo.fit,test="Chisq")
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-food has highest p-value so it is left out.
+The variable food has highest p-value so it is left out.
 
 ## 1d
 
@@ -90,8 +90,8 @@ summary(osteo3.fit)
 ## 1e
 
 Only height has a significant realtion with osteochondroses. The
-log-odds ratio for heigth is 0.094: The difference in log-odds is height
-is increased by 1.
+log-odds ratio for heigth is 0.094: The difference in log-odds if height
+is increased by 1. And the difference in log-odds is the log oddsratio.
 
 ## 1f
 
@@ -107,11 +107,11 @@ confint(osteo3.fit)
 
 ## 1g
 
-The occurence of osreochondrosis was analysed using a logistic
+The occurence of osteochondrosis was analysed using a logistic
 regression model with food, ground and height as independent variables.
 Model reduction was done with the likelihood ratio test. The final model
 only contained the height variable. The log-odds ratio for heigth is
-0.094: The difference in log-odds is height is increased by 1. (Off
+0.094: The difference in log-odds if height is increased by 1. (Off
 course a description of the variables is also needed.)
 
 # Exercise 2
@@ -158,10 +158,10 @@ summary(epifit.1)
 
 ## 2c
 
-The estimates are the differences in log-odds ration per unit time. Or
-for instance: the odds per month follow up for the low immune status
-group is exp(1.69421)=5.44 times as high as for the high immune
-statusgroup
+The estimates are the differences in log-odds per unit time, or the
+log-odds ratio’s per unit time. Or for instance: the odds per month
+follow up for the low immune status group is exp(1.69421)=5.44 times as
+high as for the high immune statusgroup
 
 ## 2d
 
@@ -241,11 +241,11 @@ drop1(osteo3.fit,test="Chisq")
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-With some fathers there is a higer chance of getting oc. Thismight
-indicate an heredibility effect. (note some of the standard errors are
-huge indicating problems with the fit of this model). If a mare at the
-age of 3 is relatively high then the mare grew harder which might cause
-problems.
+With some fathers there is a higer chance for daughters of getting oc.
+This might indicate an heredibility effect. (note some of the standard
+errors are huge indicating problems with the fit of this model). If a
+mare at the age of 3 is relatively high then the mare grew harder which
+might cause problems.
 
 ## 3e
 
@@ -315,7 +315,7 @@ Variable father is thrown out first, since this leads to the lowest AIC;
 then food and ground are removed, leaving only height in the model. For
 this final model the coefficients are given. An important message: model
 building with LRT tests can be substantially different from model
-building with AIC.
+building with AIC. So do not mix AIC with hypothesis testing.
 
 ## 3g
 
@@ -330,9 +330,9 @@ confint(glm(oc~height,family=binomial,data=lr5))
     ## height        0.0303029  0.1606951
 
 The probability that this interval contains the population value of the
-parameter is 0.95 or The interval contain plausible values for the log
-odds ratio in the population in the sense that thos values would lead to
-the conclusion do not reject when tested in a null-hypothesis.
+parameter is 0.95 or the interval contain plausible values for the log
+odds ratio in the population in the sense that those values would lead
+to the conclusion do not reject when tested in a null-hypothesis.
 
 # Exercise 4
 

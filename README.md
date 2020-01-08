@@ -27,6 +27,8 @@ likelihood approach.</font>
 
   - [Answers](Answer-poisson.md) exercises poisson models.
 
+  - Presentation. [pdf-file](count-pres.pdf)
+
 <font size="5"> 4. **Generalized linear models**</font>
 
   - Text short intermezzo on generalized linear models,

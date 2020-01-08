@@ -37,6 +37,9 @@ editor_options:
 
 - [Answers](Answer-poisson.md) exercises poisson models.
 
+- Presentation.
+[pdf-file](count-pres.pdf)
+
 <font size="5">  4. **Generalized linear models**</font> 
 
 

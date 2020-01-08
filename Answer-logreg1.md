@@ -144,7 +144,7 @@ calculate the loglikelhood values one can use logLik(fit.1)
 likelihood ratio for the models compared to model with constant
 (exp(l1-l0)):
 
-| comparison | LRT   |
+| comparison | LR    |
 | ---------- | ----- |
 | age vs 1   | 3.97  |
 | smoke vs 1 | 11.47 |
