@@ -44,5 +44,7 @@ likelihood approach.</font>
   - [Answers](Answer-mixedmodels2.md) exercises Mixed effect models 2
     models.
 
+  - Presentation. [pdf-file](mixed-models-pres.pdf)
+
 <font size="5"> All comments are most welcome. Please email me:
 <j.vandenbroek@uu.nl></font>

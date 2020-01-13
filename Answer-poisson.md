@@ -103,8 +103,8 @@ confint(cancer.fit2)
     ## factor(age)6 0.9143186 1.899720
 
 For example: the log ratio mean number of cancer cases per 1000
-individualsfor age 5 vs age 1 is 1.39 with a 95% profile log-likelihood
-confidence interval of (1.39;1.90)
+individualsfor age 5 vs age 1 is 1.8472 with a 95% profile
+log-likelihood confidence interval of (1.39;2.31)
 
 For the ratio’s:
 
@@ -112,10 +112,8 @@ For the ratio’s:
 exp(coef(cancer.fit2))
 ```
 
-    ##  (Intercept) factor(age)2 factor(age)3 factor(age)4 factor(age)5 
-    ##     2.844828     2.951584     4.489204     5.756252     6.342177 
-    ## factor(age)6 
-    ##     4.088919
+    ##  (Intercept) factor(age)2 factor(age)3 factor(age)4 factor(age)5 factor(age)6 
+    ##     2.844828     2.951584     4.489204     5.756252     6.342177     4.088919
 
 ``` r
 exp(confint(cancer.fit2))
@@ -266,10 +264,10 @@ summary(pyear.fit)
     ## glm(formula = log(Pyears) ~ factor(Age) + factor(Smoke), data = p2)
     ## 
     ## Deviance Residuals: 
-    ##         1          2          3          4          5          6  
-    ## -0.178804   0.178804   0.007955  -0.007955   0.114142  -0.114142  
-    ##         7          8          9         10  
-    ##  0.102818  -0.102818  -0.046110   0.046110  
+    ##         1          2          3          4          5          6          7  
+    ## -0.178804   0.178804   0.007955  -0.007955   0.114142  -0.114142   0.102818  
+    ##         8          9         10  
+    ## -0.102818  -0.046110   0.046110  
     ## 
     ## Coefficients:
     ##                Estimate Std. Error t value Pr(>|t|)    
@@ -350,7 +348,7 @@ ggplot(p3,aes(x=fv,y=res))+geom_point()
 ![](Answer-poisson_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 There are some fitted values with very large residuals\! So the model
-fitting is done yet. See dependent data.
+fitting is not done yet. See dependent data.
 
 # Exercise 4
 

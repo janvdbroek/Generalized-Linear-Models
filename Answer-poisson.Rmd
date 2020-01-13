@@ -40,7 +40,7 @@ summary(cancer.fit2)
 confint(cancer.fit2)
 ```
 
-For example: the log ratio mean number of cancer cases per 1000 individualsfor age 5 vs age 1 is 1.39 with a 95% profile log-likelihood confidence interval of (1.39;1.90)
+For example: the log ratio mean number of cancer cases per 1000 individualsfor age 5 vs age 1 is 1.8472 with a 95% profile log-likelihood confidence interval of (1.39;2.31)
 
 For the ratio's:
 ```{r}
@@ -104,7 +104,7 @@ library(ggplot2)
 ggplot(p3,aes(x=fv,y=res))+geom_point()
 ```
 
-There are some fitted values with very large residuals! So the model fitting is done yet. See dependent data.
+There are some fitted values with very large residuals! So the model fitting is not done yet. See dependent data.
 
 # Exercise 4
 
