@@ -90,30 +90,31 @@ library(lme4)
     ## Loading required package: Matrix
 
 ``` r
-fit <- lmer(protein~factor(Time)+(1|Cow),data=mm1)
+fit <- lmer(protein~factor(Time)+(1|Cow),REML=FALSE,data=mm1)
 summary(fit)
 ```
 
-    ## Linear mixed model fit by REML ['lmerMod']
+    ## Linear mixed model fit by maximum likelihood  ['lmerMod']
     ## Formula: protein ~ factor(Time) + (1 | Cow)
     ##    Data: mm1
     ## 
-    ## REML criterion at convergence: 98.2
+    ##      AIC      BIC   logLik deviance df.resid 
+    ##     96.6    108.8    -44.3     88.6      154 
     ## 
     ## Scaled residuals: 
-    ##     Min      1Q  Median      3Q     Max 
-    ## -2.8843 -0.5368  0.0391  0.6503  1.8107 
+    ##      Min       1Q   Median       3Q      Max 
+    ## -2.90269 -0.54023  0.03935  0.65442  1.82226 
     ## 
     ## Random effects:
     ##  Groups   Name        Variance Std.Dev.
-    ##  Cow      (Intercept) 0.04967  0.2229  
-    ##  Residual             0.06548  0.2559  
+    ##  Cow      (Intercept) 0.04904  0.2215  
+    ##  Residual             0.06465  0.2543  
     ## Number of obs: 158, groups:  Cow, 79
     ## 
     ## Fixed effects:
     ##               Estimate Std. Error t value
-    ## (Intercept)    3.83405    0.03818  100.42
-    ## factor(Time)3 -0.43089    0.04071  -10.58
+    ## (Intercept)    3.83405    0.03794  101.07
+    ## factor(Time)3 -0.43089    0.04046  -10.65
     ## 
     ## Correlation of Fixed Effects:
     ##             (Intr)
@@ -246,7 +247,7 @@ confint(fit.od2)
 
 ``` r
 mm3 <- grouseticks
-fit.gr <- lmer(TICKS~HEIGHT+factor(YEAR)+(1|BROOD),data = mm3)
+fit.gr <- lmer(TICKS~HEIGHT+factor(YEAR)+(1|BROOD),REML=FALSE,data = mm3)
 ```
 
 ## 3b

@@ -36,7 +36,7 @@ So the correlation between protein on time 1 and time 3 is 0.47 with a 95% two s
 ## 1d
 ```{r}
 library(lme4)
-fit <- lmer(protein~factor(Time)+(1|Cow),data=mm1)
+fit <- lmer(protein~factor(Time)+(1|Cow),REML=FALSE,data=mm1)
 summary(fit)
 ```
 ## 1d
@@ -92,7 +92,7 @@ confint(fit.od2)
 
 ```{r}
 mm3 <- grouseticks
-fit.gr <- lmer(TICKS~HEIGHT+factor(YEAR)+(1|BROOD),data = mm3)
+fit.gr <- lmer(TICKS~HEIGHT+factor(YEAR)+(1|BROOD),REML=FALSE,data = mm3)
 ```
 
 ## 3b
