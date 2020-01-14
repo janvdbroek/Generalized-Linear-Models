@@ -97,8 +97,10 @@ difference is .95 with a standard error of 1.0723
 # exercise 3
 
 ## 3a
+Data can be directly read from github. First give the adress in a variable  and then read the file:
 ```{r}
-lm3 <- read.table("aligator.txt",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/aligator.txt"
+lm3 <- read.table(adress,header=TRUE)
 ```
 or with read in the data with the rstudio menu: import dataset, from text.
 ```{r}
@@ -197,7 +199,8 @@ So by choosing a parameterization various aspects of the regression equations ca
 ## 5a
 
 ```{r}
-lm5 <- read.table("lowbirth.dat",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/lowbirth.dat"
+lm5 <- read.table(adress,header=TRUE)
 #
 fit.0 <- glm(bwt~ht+smoke+age+smoke:ht+age:ht,data = lm5)
 drop1(fit.0,test="F")

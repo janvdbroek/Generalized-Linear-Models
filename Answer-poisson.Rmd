@@ -10,7 +10,8 @@ output:
 
 ## 1a
 ```{r}
-p1 <- read.table("cancer",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/cancer"
+p1 <- read.table(adress,header=TRUE)
 cancer.fit <- glm(cases~factor(age)+factor(city)+
                     offset(log(pop/1000)),family=poisson,data=p1)
 ```
@@ -53,7 +54,8 @@ The mean number of cancer cases per 1000 individuals in agegroup 5 is 6.34 large
 
 ## 2a
 ```{r}
-p2 <- read.table("coronary",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/coronary"
+p2 <- read.table(adress,header=TRUE)
 ```
 
 ## 2b
@@ -109,7 +111,8 @@ There are some fitted values with very large residuals! So the model fitting is 
 # Exercise 4
 
 ```{r}
-p4 <- read.table("BeetleEggCrowding.txt",header = TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/BeetleEggCrowding.txt"
+p4 <- read.table(adress,header = TRUE)
 negg.fit <- glm(NumEggs~factor(Temp)+factor(TRT)+
                   factor(Temp):factor(TRT),
                 family = poisson,data=p4)

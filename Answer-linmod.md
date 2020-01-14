@@ -153,8 +153,12 @@ error of 1.0723
 
 ## 3a
 
+Data can be directly read from github. First give the adress in a
+variable and then read the file:
+
 ``` r
-lm3 <- read.table("aligator.txt",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/aligator.txt"
+lm3 <- read.table(adress,header=TRUE)
 ```
 
 or with read in the data with the rstudio menu: import dataset, from
@@ -185,13 +189,13 @@ ggplot(lm3,aes(y=log(Weight),x=log(Length)))+
 cor(lm3$Length,lm3$Weight)
 ```
 
-    ## [1] 0.7539555
+    ## [1] 0.7812519
 
 ``` r
 cor(log(lm3$Length),log(lm3$Weight))
 ```
 
-    ## [1] 0.8022409
+    ## [1] 0.8680974
 
 The log version is a better.
 
@@ -208,20 +212,20 @@ summary(Wght.fit)
     ## 
     ## Deviance Residuals: 
     ##      Min        1Q    Median        3Q       Max  
-    ## -1.14760  -0.11467   0.01308   0.14533   0.86451  
+    ## -1.23474  -0.06012   0.00835   0.13092   0.67242  
     ## 
     ## Coefficients:
     ##             Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)  -6.4768     1.6704  -3.877 0.000762 ***
-    ## log(Length)   2.4349     0.3778   6.445 1.41e-06 ***
+    ## (Intercept)  -7.3595     1.3889  -5.299 2.23e-05 ***
+    ## log(Length)   2.6348     0.3141   8.387 1.89e-08 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## (Dispersion parameter for gaussian family taken to be 0.1598641)
+    ## (Dispersion parameter for gaussian family taken to be 0.1105235)
     ## 
-    ##     Null deviance: 10.3164  on 24  degrees of freedom
-    ## Residual deviance:  3.6769  on 23  degrees of freedom
-    ## AIC: 29.027
+    ##     Null deviance: 10.316  on 24  degrees of freedom
+    ## Residual deviance:  2.542  on 23  degrees of freedom
+    ## AIC: 19.799
     ## 
     ## Number of Fisher Scoring iterations: 2
 
@@ -238,8 +242,8 @@ drop1(Wght.fit,test="F")
     ## Model:
     ## log(Weight) ~ log(Length)
     ##             Df Deviance    AIC F value    Pr(>F)    
-    ## <none>           3.6769 29.027                      
-    ## log(Length)  1  10.3164 52.818  41.532 1.413e-06 ***
+    ## <none>            2.542 19.799                      
+    ## log(Length)  1   10.316 52.818  70.341 1.889e-08 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -447,7 +451,8 @@ the difference in slope and/or intercept).
 ## 5a
 
 ``` r
-lm5 <- read.table("lowbirth.dat",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/lowbirth.dat"
+lm5 <- read.table(adress,header=TRUE)
 #
 fit.0 <- glm(bwt~ht+smoke+age+smoke:ht+age:ht,data = lm5)
 drop1(fit.0,test="F")

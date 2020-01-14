@@ -10,7 +10,8 @@ output:
 
 ## 1a
 ```{r}
-lr1 <- read.table("episode.txt",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/episode.txt"
+lr1 <- read.table(adress,header=TRUE)
 lr1$immune <- 1*(lr1$cd4<200)
 epifit.1 <- glm(episode~immune,family=binomial,data = lr1)
 summary(epifit.1)
@@ -41,7 +42,8 @@ so here the odds per unit time is modelled.
 
 ## 2a
 ```{r}
-lr2 <-read.table("lowbirth.dat",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/lowbirth.dat"
+lr2 <-read.table(adress,header=TRUE)
 ```
 
 ## 2b 
@@ -83,7 +85,8 @@ The mdel with smoke has lowest AIC although the model with ht is close.
 
 ## 3a
 ```{r}
-lr3 <- read.table("pdd.csv",header=TRUE,sep=",")
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/pdd.csv"
+lr3 <- read.table(adress,header=TRUE,sep=",")
 ```
 
 ## 3b
@@ -116,7 +119,8 @@ exp(coef(pdd.fit))
 
 ## 4a
 ```{r}
-lr4 <- read.table("dalmatian.csv",header=TRUE,sep=",")
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/dalmatian.csv"
+lr4 <- read.table(adress,header=TRUE,sep=",")
 ```
 or with the rstudio menu.
 ## 4b

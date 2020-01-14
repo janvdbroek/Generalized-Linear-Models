@@ -6,7 +6,8 @@ Answers to exercises “Binary data: Logistic regression” part 2
 ## 1a
 
 ``` r
-lr5 <- read.table("osteochon.csv",header=TRUE,sep=",")
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/osteochon.csv"
+lr5 <- read.table(adress,header=TRUE,sep=",")
 ```
 
 ## 1b
@@ -119,7 +120,8 @@ course a description of the variables is also needed.)
 ## 2a
 
 ``` r
-lr1 <- read.table("episode.txt",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/episode.txt"
+lr1 <- read.table(adress,header=TRUE)
 lr1$immune <- 1*(lr1$cd4<200)
 ```
 
@@ -336,10 +338,11 @@ to the conclusion do not reject when tested in a null-hypothesis.
 
 # Exercise 4
 
-# 1a
+# 4a
 
 ``` r
-lr2 <-read.table("lowbirth.dat",header=TRUE)
+adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/lowbirth.dat"
+lr2 <-read.table(adress,header=TRUE)
 low.fit <- glm(low~age+lwt+factor(race)+smoke+factor(ptl)+
                  ht+ui+factor(ftv),family=binomial,data=lr2)
 step(low.fit)
