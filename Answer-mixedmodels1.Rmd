@@ -47,7 +47,7 @@ With the random intercept model the result:
                ...
 factor(Time)3 -0.43089    0.04046  -10.56
 
-is the same as with the paired t-test. (The difference in sign is because the random intercept model catculates the difference in means beyween time 3 and time 1, whereas the pairde t-test takes this diffrence between time 3 and time 1)
+is the same as with the paired t-test. (The difference in sign is because the random intercept model calculates the difference in means between time 3 and time 1, whereas the paired t-test takes this diffrence between time 1 and time 3)
 
 # Exercise 2
 
