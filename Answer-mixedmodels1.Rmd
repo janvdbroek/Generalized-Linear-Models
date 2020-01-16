@@ -39,13 +39,13 @@ library(lme4)
 fit <- lmer(protein~factor(Time)+(1|Cow),REML=FALSE,data=mm1)
 summary(fit)
 ```
-## 1d
+## 1e
 
 With the random intercept model the result:
 
                Estimate Std. Error t value  
                ...
-factor(Time)3 -0.43089    0.04071  -10.58
+factor(Time)3 -0.43089    0.04046  -10.56
 
 is the same as with the paired t-test. (The difference in sign is because the random intercept model catculates the difference in means beyween time 3 and time 1, whereas the pairde t-test takes this diffrence between time 3 and time 1)
 

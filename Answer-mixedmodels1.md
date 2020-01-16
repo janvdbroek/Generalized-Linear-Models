@@ -120,7 +120,7 @@ summary(fit)
     ##             (Intr)
     ## factor(Tm)3 -0.533
 
-## 1d
+## 1e
 
 With the random intercept model the result:
 
@@ -129,7 +129,7 @@ With the random intercept model the result:
            ...
 ```
 
-factor(Time)3 -0.43089 0.04071 -10.58
+factor(Time)3 -0.43089 0.04046 -10.56
 
 is the same as with the paired t-test. (The difference in sign is
 because the random intercept model catculates the difference in means
