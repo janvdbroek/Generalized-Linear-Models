@@ -34,6 +34,8 @@ likelihood approach.</font>
 -   Text short intermezzo on generalized linear models,
     [Pdf-file](genlinmod.pdf)
 
+-   Presentation. [pdf-file](genlinmod-pres.pdf)
+
 <font size="5"> 5. **Dependent data: Mixed effect models**</font>
 
 -   Text Mixed effect models, [Pdf-file](Dependent_data.pdf) of the text
