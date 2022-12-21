@@ -131,18 +131,18 @@ The log version is a better.
 Wght.fit <- glm(log(Weight)~log(Length),data = lm3)
 summary(Wght.fit)
 ```
-log(Weight)=-6.48+2.435*log(Length)+residual
+log(Weight)=-7.36+2.635*log(Length)+residual
 
 ## 3e
 ```{r}
 drop1(Wght.fit,test="F")
 ```
 
-name     | SS    | df | ms   | F  | p=value
----------|-------|----|------|----|----------
-weight   |  6.64 |  1 |  6.64|41.5| 1.4*10^-6
-Residual |  3.68 | 23 |  0.16|    |    
-Total    | 10.32 | 24 |
+name          | SS    | df | ms   | F  | p=value
+--------------|-------|----|------|----|----------
+log(length)   |  7.77 |  1 |  7.77|70.3| 1.9*10^-8
+Residual      |  2.54 | 23 |  0.11|    |    
+Total         | 10.36 | 24 |
 
 The nulhypothesis that the regression coefficient in the
 population is zero is rejected since the p value is very low.
