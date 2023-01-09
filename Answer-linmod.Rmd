@@ -144,7 +144,7 @@ log(length)   |  7.77 |  1 |  7.77|70.3| 1.9*10^-8
 Residual      |  2.54 | 23 |  0.11|    |    
 Total         | 10.36 | 24 |
 
-The nulhypothesis that the regression coefficient in the
+The nul-hypothesis that the regression coefficient in the
 population is zero is rejected since the p value is very low.
 
 # exercise 4

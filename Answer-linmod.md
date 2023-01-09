@@ -1,5 +1,11 @@
-Answers to exercises " Continuous data: Linear models"
+Answers to exercises ” Continuous data: Linear models”
 ================
+
+-   [Exercise 1](#exercise-1)
+-   [Exercise 2](#exercise-2)
+-   [exercise 3](#exercise-3)
+-   [exercise 4](#exercise-4)
+-   [exercise 5](#exercise-5)
 
 # Exercise 1
 
@@ -39,11 +45,11 @@ drop1(metab.fit,test = "F")
     ## <none>                532.93 91.167               
     ## factor(location)  1   558.00 89.765  0.5175 0.4869
 
-| name     | SS     | df | ms   | F    | p=value |
-| -------- | ------ | -- | ---- | ---- | ------- |
-| Location | 25.1   | 1  | 25.1 | 0.52 | 0.4869  |
-| Residual | 532.93 | 11 | 48.4 |      |         |
-| Total    | 558    | 12 |      |      |         |
+| name     | SS     | df  | ms   | F    | p=value |
+|----------|--------|-----|------|------|---------|
+| Location | 25.1   | 1   | 25.1 | 0.52 | 0.4869  |
+| Residual | 532.93 | 11  | 48.4 |      |         |
+| Total    | 558    | 12  |      |      |         |
 
 ## 1d
 
@@ -95,18 +101,18 @@ drop1(blcalc.fit,test="F")
     ## Model:
     ## blcalc ~ treat + sex
     ##        Df Deviance    AIC F value Pr(>F)
-    ## <none>      97.733 96.488               
+    ## <none>      97.732 96.488               
     ## treat   1  102.245 95.390  0.7849 0.3880
     ## sex     1  109.437 96.750  2.0359 0.1717
 
 SS for treat 102.245-97.733=4.512 and for sex 109.437-97.733=11.704
 
-| name     | SS     | df | ms    | F    | p=value |
-| -------- | ------ | -- | ----- | ---- | ------- |
-| treat    | 4.51   | 1  | 4.51  | 0.79 | 0.3880  |
-| sex      | 11.70  | 1  | 11.70 | 2.04 | 0.1717  |
-| residual | 97.73  | 17 | 5.75  |      |         |
-| total    | 113.95 |    |       |      |         |
+| name     | SS     | df  | ms    | F    | p=value |
+|----------|--------|-----|-------|------|---------|
+| treat    | 4.51   | 1   | 4.51  | 0.79 | 0.3880  |
+| sex      | 11.70  | 1   | 11.70 | 2.04 | 0.1717  |
+| residual | 97.73  | 17  | 5.75  |      |         |
+| total    | 113.95 |     |       |      |         |
 
 ## 2d
 
@@ -171,6 +177,8 @@ ggplot(lm3,aes(y=Weight,x=Length))+
   theme_bw()
 ```
 
+    ## `geom_smooth()` using formula = 'y ~ x'
+
 ![](Answer-linmod_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ## 3b
@@ -182,7 +190,9 @@ ggplot(lm3,aes(y=log(Weight),x=log(Length)))+
   theme_bw()
 ```
 
-![](Answer-linmod_files/figure-gfm/unnamed-chunk-11-1.png)<!-- --> \#\#
+    ## `geom_smooth()` using formula = 'y ~ x'
+
+![](Answer-linmod_files/figure-gfm/unnamed-chunk-11-1.png)<!-- --> \##
 3c
 
 ``` r
@@ -229,7 +239,7 @@ summary(Wght.fit)
     ## 
     ## Number of Fisher Scoring iterations: 2
 
-log(Weight)=-6.48+2.435\*log(Length)+residual
+log(Weight)=-7.36+2.635\*log(Length)+residual
 
 ## 3e
 
@@ -247,13 +257,13 @@ drop1(Wght.fit,test="F")
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-| name     | SS    | df | ms   | F    | p=value    |
-| -------- | ----- | -- | ---- | ---- | ---------- |
-| weight   | 6.64  | 1  | 6.64 | 41.5 | 1.4\*10^-6 |
-| Residual | 3.68  | 23 | 0.16 |      |            |
-| Total    | 10.32 | 24 |      |      |            |
+| name        | SS    | df  | ms   | F    | p=value    |
+|-------------|-------|-----|------|------|------------|
+| log(length) | 7.77  | 1   | 7.77 | 70.3 | 1.9\*10^-8 |
+| Residual    | 2.54  | 23  | 0.11 |      |            |
+| Total       | 10.36 | 24  |      |      |            |
 
-The nulhypothesis that the regression coefficient in the population is
+The nul-hypothesis that the regression coefficient in the population is
 zero is rejected since the p value is very low.
 
 # exercise 4
@@ -471,7 +481,7 @@ drop1(fit.0,test="F")
 
 So the ht:age interaction is needed in the model. Now fit the model
 without the ht:smoke interaction: interpretation: for instance ht:age,
-the age effect depends on the hypertension group. \#\# 5c
+the age effect depends on the hypertension group. \## 5c
 
 ``` r
 fit.1 <- glm(bwt~ht+smoke+age+age:ht,data = lm5)
