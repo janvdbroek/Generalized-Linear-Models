@@ -1,6 +1,28 @@
 Answers to exercises “Binary data: Logistic regression” part 1
 ================
 
+-   [Exercise 1](#exercise-1)
+    -   [1a](#1a)
+    -   [1b](#1b)
+    -   [1c](#1c)
+    -   [1d](#1d)
+-   [Exercise 2](#exercise-2)
+    -   [2a](#2a)
+    -   [2b](#2b)
+    -   [2c](#2c)
+    -   [2 d+e](#2-de)
+    -   [2f](#2f)
+-   [Exercise 3](#exercise-3)
+    -   [3a](#3a)
+    -   [3b](#3b)
+    -   [3c](#3c)
+    -   [3d](#3d)
+    -   [3e](#3e)
+-   [Exercise 4](#exercise-4)
+    -   [4a](#4a)
+    -   [4c](#4c)
+    -   [4d](#4d)
+
 # Exercise 1
 
 ## 1a
@@ -105,7 +127,7 @@ parameters.
 
 The model with only a comstant and an offset is:
 
-log(odds)=a+log(follow-up) or log(odds/follow-up)=1
+log(odds)=a+log(follow-up) or log(odds/follow-up)=a
 
 so here the odds per unit time is modelled.
 
@@ -137,20 +159,20 @@ log odds ratio if the independent variable is increased by 1
 calculate the loglikelhood values one can use logLik(fit.1)
 
 | Model | AIC   | estimate b | log-likelihhod |
-| ----- | ----- | ---------- | -------------- |
-| age   | 235.9 | \-0.05     | \-115.96       |
-| smoke | 233.8 | 0.70       | \-114.90       |
-| ht    | 234.7 | 1.2        | \-115.32       |
-| 1     | 237.7 |            | \-117.34       |
+|-------|-------|------------|----------------|
+| age   | 235.9 | -0.05      | -115.96        |
+| smoke | 233.8 | 0.70       | -114.90        |
+| ht    | 234.7 | 1.2        | -115.32        |
+| 1     | 236.7 |            | -117.34        |
 
 likelihood ratio for the models compared to model with constant
 (exp(l1-l0)):
 
 | comparison | LR    |
-| ---------- | ----- |
+|------------|-------|
 | age vs 1   | 3.97  |
-| smoke vs 1 | 11.47 |
-| ht vs 1    | 7.54  |
+| smoke vs 1 | 11.40 |
+| ht vs 1    | 7.47  |
 
 interpretation: for instance the model with hypertension historyand a
 constantant makes the data 7.54 times as probable as amodel with only a
@@ -158,7 +180,7 @@ constant.
 
 ## 2f
 
-The mdel with smoke has lowest AIC although the model with ht is close.
+The model with smoke has lowest AIC although the model with ht is close.
 
 # Exercise 3
 
@@ -188,7 +210,7 @@ with(lr3,tapply(n,list(nop),sum))
 ## 3c
 
 | Nop   | pdd=0 | pdd=1 | total |
-| ----- | ----- | ----- | ----- |
+|-------|-------|-------|-------|
 | nop=0 | 138   | 20    | 158   |
 | nop=1 | 105   | 45    | 150   |
 |       |       |       |       |
@@ -196,10 +218,10 @@ with(lr3,tapply(n,list(nop),sum))
 
 ## 3d
 
-\(OR=\frac{45 \cdot 138}{20 \cdot105}=2.957\) The pdd-odds in nop
-centers is about 3 times larger as in in birds not from such a center.
-There seems to be some logic in that since birds are brougth to an nop
-center if something is wrong with there health.
+$OR=\frac{45 \cdot 138}{20 \cdot105}=2.957$ The pdd-odds in nop centers
+is about 3 times larger as in in birds not from such a center. There
+seems to be some logic in that since birds are brougth to an nop center
+if something is wrong with there health.
 
 ## 3e
 
@@ -247,7 +269,7 @@ adress <- "https://raw.github.com/janvdbroek/Generalized-Linear-Models/master/da
 lr4 <- read.table(adress,header=TRUE,sep=",")
 ```
 
-or with the rstudio menu. \#\# 4b See the explanatipon in the text
+or with the rstudio menu. \## 4b See the explanatipon in the text
 section 9
 
 ## 4c
@@ -310,6 +332,6 @@ summary(dalfit.0)
     ## Number of Fisher Scoring iterations: 3
 
 | model | AIC    | log-lik | lik. ratio          |
-| ----- | ------ | ------- | ------------------- |
-| 1     | 1147.0 | \-572.5 |                     |
-| fhs   | 1085.2 | \-540.4 | exp(31.9)=7.145e+13 |
+|-------|--------|---------|---------------------|
+| 1     | 1147.0 | -572.5  |                     |
+| fhs   | 1085.2 | -540.4  | exp(31.9)=7.145e+13 |

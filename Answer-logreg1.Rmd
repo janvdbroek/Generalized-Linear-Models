@@ -34,7 +34,7 @@ So there is not much difference and then the model with the offset is preferred 
 
 The model with only a comstant and an offset is: 
 
-log(odds)=a+log(follow-up) or log(odds/follow-up)=1
+log(odds)=a+log(follow-up) or log(odds/follow-up)=a
 
 so here the odds per unit time is modelled.
 
@@ -66,20 +66,20 @@ Model  |  AIC  |  estimate b | log-likelihhod
 age    | 235.9 |   -0.05     | -115.96
 smoke  | 233.8 |    0.70     | -114.90
 ht     | 234.7 |    1.2      | -115.32
-1      | 237.7 |             | -117.34
+1      | 236.7 |             | -117.34
 
 likelihood ratio for the models compared to model with constant (exp(l1-l0)):
 
 comparison  |  LR
 ------------|-------
 age vs 1    |  3.97
-smoke vs 1  | 11.47
-ht vs 1     |  7.54
+smoke vs 1  | 11.40
+ht vs 1     |  7.47
 
 interpretation: for instance the model with hypertension historyand a constantant makes the data 7.54 times as probable as amodel with only a constant.
 
 ## 2f
-The mdel with smoke has lowest AIC although the model with ht is close.
+The model with smoke has lowest AIC although the model with ht is close.
 
 # Exercise 3
 
