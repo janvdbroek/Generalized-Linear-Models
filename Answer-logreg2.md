@@ -105,8 +105,11 @@ confint(osteo3.fit)
     ##                   2.5 %     97.5 %
     ## (Intercept) -28.2865831 -6.7577637
     ## height        0.0303029  0.1606951
-
+    
 ## 1g
+Those values for the parameter of height for which the likelihood ratio w.r.t. the maximum likelihood estimate is smaller than 7.
+
+## 1h
 
 The occurence of osteochondrosis was analysed using a logistic
 regression model with food, ground and height as independent variables.
@@ -320,9 +323,10 @@ building with LRT tests can be substantially different from model
 building with AIC. So do not mix AIC with hypothesis testing.
 
 ## 3g
+$\frac{L_1}{L_0}<0$ so $2log(\frac{L_1}{L_0})<2log(9)=4.3945$ and so $\alpha=0.065$ thus:
 
 ``` r
-confint(glm(oc~height,family=binomial,data=lr5))
+confint(glm(oc~height,family=binomial,data=lr5),level=1-0.065)
 ```
 
     ## Waiting for profiling to be done...
@@ -331,10 +335,6 @@ confint(glm(oc~height,family=binomial,data=lr5))
     ## (Intercept) -28.2865831 -6.7577637
     ## height        0.0303029  0.1606951
 
-The probability that this interval contains the population value of the
-parameter is 0.95 or the interval contain plausible values for the log
-odds ratio in the population in the sense that those values would lead
-to the conclusion do not reject when tested in a null-hypothesis.
 
 # Exercise 4
 
