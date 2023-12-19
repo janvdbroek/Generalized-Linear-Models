@@ -323,10 +323,11 @@ building with LRT tests can be substantially different from model
 building with AIC. So do not mix AIC with hypothesis testing.
 
 ## 3g
-$\frac{L_1}{L_0}<0$ so $2log(\frac{L_1}{L_0})<2log(9)=4.3945$ and so $\alpha=0.065$ thus:
+Since confint() works with a confidence level, first an significance level $\alpha$ should be determined.
+$\frac{L_1}{L_0}<9$ so $2log(\frac{L_1}{L_0})<2log(9)=4.3945$ and so,by using a chi-squared wit 1 df (1-pchisq(q=4.3945,df=1)), $\alpha=0.0361$ thus:
 
 ``` r
-confint(glm(oc~height,family=binomial,data=lr5),level=1-0.065)
+confint(glm(oc~height,family=binomial,data=lr5),level=1-0.0361)
 ```
 
     ## Waiting for profiling to be done...

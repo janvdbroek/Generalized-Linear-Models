@@ -677,19 +677,16 @@ building with AIC. So do not mix AIC with hypothesis testing.</p>
 </div>
 <div id="g-1" class="section level2">
 <h2>3g</h2>
-<p><span class="math inline">\(\frac{L_1}{L_0}&lt;0\)</span> so <span class="math inline">\(2log(\frac{L_1}{L_0})&lt;2log(9)=4.3945\)</span>
-and so <span class="math inline">\(\alpha=0.065\)</span> thus:</p>
-<pre class="r"><code>confint(glm(oc~height,family=binomial,data=lr5),level=1-0.065)</code></pre>
+<p>Since confint() works with a confidence level, first an significance
+level <span class="math inline">\(\alpha\)</span> should be determined.
+<span class="math inline">\(\frac{L_1}{L_0}&lt;9\)</span> so <span class="math inline">\(2log(\frac{L_1}{L_0})&lt;2log(9)=4.3945\)</span>
+and so,by using a chi-squared wit 1 df (1-pchisq(q=4.3945,df=1)), <span class="math inline">\(\alpha=0.0361\)</span> thus:</p>
+<pre class="r"><code>confint(glm(oc~height,family=binomial,data=lr5),level=1-0.0361)</code></pre>
 <pre><code>## Waiting for profiling to be done...
 
 ##                   2.5 %     97.5 %
 ## (Intercept) -28.2865831 -6.7577637
 ## height        0.0303029  0.1606951</code></pre>
-<p>The probability that this interval contains the population value of
-the parameter is 0.95 or the interval contain plausible values for the
-log odds ratio in the population in the sense that those values would
-lead to the conclusion do not reject when tested in a
-null-hypothesis.</p>
 </div>
 </div>
 <div id="exercise-4" class="section level1">
